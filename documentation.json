@@ -1,0 +1,53 @@
+[
+  {
+    "name": "Perimeter",
+    "comment": "\n\n# Type and Constructor\n@docs Perimeter, Msg, Config\n\n# State\n@docs init\n\n# View\n@docs view\n\n# Update\n@docs update\n\n# Subscriptions\n@docs subscriptions\n",
+    "aliases": [
+      {
+        "name": "Config",
+        "comment": " The configuration for perimeter.\nPadding represents the padding from which the perimeter is breached.\nWhen True Debug displays the perimeter.\n",
+        "args": [
+          "msg"
+        ],
+        "type": "{ padding : Float, onBreach : msg, onLeave : msg, debug : Bool }"
+      }
+    ],
+    "types": [
+      {
+        "name": "Msg",
+        "comment": " A message type for the internal of perimeter\n",
+        "args": [],
+        "cases": []
+      },
+      {
+        "name": "Perimeter",
+        "comment": " The Perimeter internal State\n",
+        "args": [],
+        "cases": []
+      }
+    ],
+    "values": [
+      {
+        "name": "init",
+        "comment": " Initial the Perimeter's state, default value:\n\n    init =\n        { breached = False\n        , rectangle = BoundingRect.initialRectangle\n        , trigger = False\n        }\n\n    initialRectangle =\n        { top = 0\n        , left = 0\n        , right = 0\n        , bottom = 0\n        , width = 0\n        , height = 0\n        }\n\n\n",
+        "type": "Perimeter.Perimeter"
+      },
+      {
+        "name": "subscriptions",
+        "comment": " Perimeter's subscriptions. It is mandatory to wire this up in the parents.\n\n    subscriptions : Model -> Sub Msg\n    subscriptions model =\n        Sub.map PerimeterMsg (Perimeter.subscriptions model.perimeter)\n\n",
+        "type": "Perimeter.Perimeter -> Platform.Sub.Sub Perimeter.Msg"
+      },
+      {
+        "name": "update",
+        "comment": " The Perimeter update function. It returns a `Maybe Msg` that needs to be\npassed to the parent's update function, like this:\n\n    let\n        ( newPerimeterModel, maybeMsg ) =\n            Perimeter.update subMsg model.perimeter perimeterConfig\n    in\n        case maybeMsg of\n            Nothing ->\n                ( { model | perimeter = newPerimeterModel }, Cmd.none )\n\n            Just msg ->\n                update msg { model | perimeter = newPerimeterModel }\n",
+        "type": "Perimeter.Msg -> Perimeter.Perimeter -> Perimeter.Config msg -> ( Perimeter.Perimeter, Maybe.Maybe msg )"
+      },
+      {
+        "name": "view",
+        "comment": " The perimeter's view. Example of use:\n\n    type Msg = Breached | Left\n\n    perimeterConfig =\n        { padding = 12\n        , onBreach = Breached\n        , onLeave = Left\n        , debug = True\n        }\n\n    Perimeter.view perimeterConfig model.perimeter [ button [] [ text \"Add\" ] ]\n",
+        "type": "Perimeter.Config msg -> Perimeter.Perimeter -> List (Html.Html Perimeter.Msg) -> Html.Html Perimeter.Msg"
+      }
+    ],
+    "generated-with-elm-version": "0.18.0"
+  }
+]
