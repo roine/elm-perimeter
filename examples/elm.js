@@ -9045,7 +9045,7 @@ var _elm_lang$mouse$Mouse$subMap = F2(
 	});
 _elm_lang$core$Native_Platform.effectManagers['Mouse'] = {pkg: 'elm-lang/mouse', init: _elm_lang$mouse$Mouse$init, onEffects: _elm_lang$mouse$Mouse$onEffects, onSelfMsg: _elm_lang$mouse$Mouse$onSelfMsg, tag: 'sub', subMap: _elm_lang$mouse$Mouse$subMap};
 
-var _user$project$Perimeter_BoundingRect$getBoundingReactStyle = function (trigger) {
+var _roine$elm_perimeter$Perimeter_BoundingRect$getBoundingReactStyle = function (trigger) {
 	return trigger ? _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
@@ -9062,15 +9062,15 @@ var _user$project$Perimeter_BoundingRect$getBoundingReactStyle = function (trigg
 			_1: {ctor: '[]'}
 		});
 };
-var _user$project$Perimeter_BoundingRect$target = function (decoder) {
+var _roine$elm_perimeter$Perimeter_BoundingRect$target = function (decoder) {
 	return A2(_elm_lang$core$Json_Decode$field, 'target', decoder);
 };
-var _user$project$Perimeter_BoundingRect$initialRectangle = {top: 0, left: 0, right: 0, bottom: 0, width: 0, height: 0};
-var _user$project$Perimeter_BoundingRect$Rectangle = F6(
+var _roine$elm_perimeter$Perimeter_BoundingRect$initialRectangle = {top: 0, left: 0, right: 0, bottom: 0, width: 0, height: 0};
+var _roine$elm_perimeter$Perimeter_BoundingRect$Rectangle = F6(
 	function (a, b, c, d, e, f) {
 		return {top: a, left: b, right: c, bottom: d, width: e, height: f};
 	});
-var _user$project$Perimeter_BoundingRect$getBoundingRect = function (tagger) {
+var _roine$elm_perimeter$Perimeter_BoundingRect$getBoundingRect = function (tagger) {
 	return A2(
 		_elm_lang$html$Html_Events$on,
 		'transitionend',
@@ -9087,20 +9087,20 @@ var _user$project$Perimeter_BoundingRect$getBoundingRect = function (tagger) {
 				},
 				A7(
 					_elm_lang$core$Json_Decode$map6,
-					_user$project$Perimeter_BoundingRect$Rectangle,
-					_user$project$Perimeter_BoundingRect$target(
+					_roine$elm_perimeter$Perimeter_BoundingRect$Rectangle,
+					_roine$elm_perimeter$Perimeter_BoundingRect$target(
 						A2(_elm_lang$core$Json_Decode$field, 'offsetTop', _elm_lang$core$Json_Decode$float)),
-					_user$project$Perimeter_BoundingRect$target(
+					_roine$elm_perimeter$Perimeter_BoundingRect$target(
 						A2(_elm_lang$core$Json_Decode$field, 'offsetLeft', _elm_lang$core$Json_Decode$float)),
 					_elm_lang$core$Json_Decode$succeed(0),
 					_elm_lang$core$Json_Decode$succeed(0),
-					_user$project$Perimeter_BoundingRect$target(
+					_roine$elm_perimeter$Perimeter_BoundingRect$target(
 						A2(_elm_lang$core$Json_Decode$field, 'offsetWidth', _elm_lang$core$Json_Decode$float)),
-					_user$project$Perimeter_BoundingRect$target(
+					_roine$elm_perimeter$Perimeter_BoundingRect$target(
 						A2(_elm_lang$core$Json_Decode$field, 'offsetHeight', _elm_lang$core$Json_Decode$float))))));
 };
 
-var _user$project$Perimeter$viewDebugFrame = F2(
+var _roine$elm_perimeter$Perimeter$viewDebugFrame = F2(
 	function (padding, rectangle) {
 		return A2(
 			_elm_lang$html$Html$div,
@@ -9168,20 +9168,20 @@ var _user$project$Perimeter$viewDebugFrame = F2(
 			},
 			{ctor: '[]'});
 	});
-var _user$project$Perimeter$Config = F4(
+var _roine$elm_perimeter$Perimeter$Config = F4(
 	function (a, b, c, d) {
 		return {padding: a, onBreach: b, onLeave: c, debug: d};
 	});
-var _user$project$Perimeter$State = F3(
+var _roine$elm_perimeter$Perimeter$State = F3(
 	function (a, b, c) {
 		return {breached: a, rectangle: b, trigger: c};
 	});
-var _user$project$Perimeter$Perimeter = function (a) {
+var _roine$elm_perimeter$Perimeter$Perimeter = function (a) {
 	return {ctor: 'Perimeter', _0: a};
 };
-var _user$project$Perimeter$init = _user$project$Perimeter$Perimeter(
-	{breached: false, rectangle: _user$project$Perimeter_BoundingRect$initialRectangle, trigger: false});
-var _user$project$Perimeter$update = F3(
+var _roine$elm_perimeter$Perimeter$init = _roine$elm_perimeter$Perimeter$Perimeter(
+	{breached: false, rectangle: _roine$elm_perimeter$Perimeter_BoundingRect$initialRectangle, trigger: false});
+var _roine$elm_perimeter$Perimeter$update = F3(
 	function (msg, _p1, _p0) {
 		var _p2 = _p1;
 		var _p10 = _p2._0.rectangle;
@@ -9204,22 +9204,22 @@ var _user$project$Perimeter$update = F3(
 					_elm_lang$core$Basics$toFloat(_p6),
 					_p10.bottom + _p8) < 0)))) ? (_elm_lang$core$Native_Utils.eq(_p9.breached, false) ? {
 					ctor: '_Tuple2',
-					_0: _user$project$Perimeter$Perimeter(
+					_0: _roine$elm_perimeter$Perimeter$Perimeter(
 						_elm_lang$core$Native_Utils.update(
 							_p9,
 							{breached: true})),
 					_1: _elm_lang$core$Maybe$Just(_p7.onBreach)
 				} : {
 					ctor: '_Tuple2',
-					_0: _user$project$Perimeter$Perimeter(_p9),
+					_0: _roine$elm_perimeter$Perimeter$Perimeter(_p9),
 					_1: _elm_lang$core$Maybe$Nothing
 				}) : (_elm_lang$core$Native_Utils.eq(_p9.breached, false) ? {
 					ctor: '_Tuple2',
-					_0: _user$project$Perimeter$Perimeter(_p9),
+					_0: _roine$elm_perimeter$Perimeter$Perimeter(_p9),
 					_1: _elm_lang$core$Maybe$Nothing
 				} : {
 					ctor: '_Tuple2',
-					_0: _user$project$Perimeter$Perimeter(
+					_0: _roine$elm_perimeter$Perimeter$Perimeter(
 						_elm_lang$core$Native_Utils.update(
 							_p9,
 							{breached: false})),
@@ -9228,7 +9228,7 @@ var _user$project$Perimeter$update = F3(
 			case 'SetRectangle':
 				return {
 					ctor: '_Tuple2',
-					_0: _user$project$Perimeter$Perimeter(
+					_0: _roine$elm_perimeter$Perimeter$Perimeter(
 						_elm_lang$core$Native_Utils.update(
 							_p9,
 							{rectangle: _p4._0})),
@@ -9237,7 +9237,7 @@ var _user$project$Perimeter$update = F3(
 			default:
 				return {
 					ctor: '_Tuple2',
-					_0: _user$project$Perimeter$Perimeter(
+					_0: _roine$elm_perimeter$Perimeter$Perimeter(
 						_elm_lang$core$Native_Utils.update(
 							_p9,
 							{trigger: true})),
@@ -9245,11 +9245,11 @@ var _user$project$Perimeter$update = F3(
 				};
 		}
 	});
-var _user$project$Perimeter$TriggerEvent = {ctor: 'TriggerEvent'};
-var _user$project$Perimeter$SetRectangle = function (a) {
+var _roine$elm_perimeter$Perimeter$TriggerEvent = {ctor: 'TriggerEvent'};
+var _roine$elm_perimeter$Perimeter$SetRectangle = function (a) {
 	return {ctor: 'SetRectangle', _0: a};
 };
-var _user$project$Perimeter$view = F3(
+var _roine$elm_perimeter$Perimeter$view = F3(
 	function (_p12, _p11, children) {
 		var _p13 = _p12;
 		var _p14 = _p11;
@@ -9257,10 +9257,10 @@ var _user$project$Perimeter$view = F3(
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _user$project$Perimeter_BoundingRect$getBoundingRect(_user$project$Perimeter$SetRectangle),
+				_0: _roine$elm_perimeter$Perimeter_BoundingRect$getBoundingRect(_roine$elm_perimeter$Perimeter$SetRectangle),
 				_1: {
 					ctor: '::',
-					_0: _user$project$Perimeter_BoundingRect$getBoundingReactStyle(_p14._0.trigger),
+					_0: _roine$elm_perimeter$Perimeter_BoundingRect$getBoundingReactStyle(_p14._0.trigger),
 					_1: {ctor: '[]'}
 				}
 			},
@@ -9269,31 +9269,31 @@ var _user$project$Perimeter$view = F3(
 				children,
 				{
 					ctor: '::',
-					_0: _p13.debug ? A2(_user$project$Perimeter$viewDebugFrame, _p13.padding, _p14._0.rectangle) : _elm_lang$html$Html$text(''),
+					_0: _p13.debug ? A2(_roine$elm_perimeter$Perimeter$viewDebugFrame, _p13.padding, _p14._0.rectangle) : _elm_lang$html$Html$text(''),
 					_1: {ctor: '[]'}
 				}));
 	});
-var _user$project$Perimeter$VerifyBreach = function (a) {
+var _roine$elm_perimeter$Perimeter$VerifyBreach = function (a) {
 	return {ctor: 'VerifyBreach', _0: a};
 };
-var _user$project$Perimeter$subscriptions = function (_p15) {
+var _roine$elm_perimeter$Perimeter$subscriptions = function (_p15) {
 	var _p16 = _p15;
 	return _elm_lang$core$Platform_Sub$batch(
 		{
 			ctor: '::',
-			_0: _elm_lang$mouse$Mouse$moves(_user$project$Perimeter$VerifyBreach),
+			_0: _elm_lang$mouse$Mouse$moves(_roine$elm_perimeter$Perimeter$VerifyBreach),
 			_1: {
 				ctor: '::',
 				_0: (!_p16._0.trigger) ? A2(
 					_elm_lang$core$Time$every,
 					10 * _elm_lang$core$Time$millisecond,
-					_elm_lang$core$Basics$always(_user$project$Perimeter$TriggerEvent)) : _elm_lang$core$Platform_Sub$none,
+					_elm_lang$core$Basics$always(_roine$elm_perimeter$Perimeter$TriggerEvent)) : _elm_lang$core$Platform_Sub$none,
 				_1: {ctor: '[]'}
 			}
 		});
 };
 
-var _user$project$Main$initialModel = {buttonText: 'Add', perimeter: _user$project$Perimeter$init};
+var _user$project$Main$initialModel = {buttonText: 'Add', perimeter: _roine$elm_perimeter$Perimeter$init};
 var _user$project$Main$init = {ctor: '_Tuple2', _0: _user$project$Main$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$Main$Model = F2(
 	function (a, b) {
@@ -9306,7 +9306,7 @@ var _user$project$Main$subscriptions = function (model) {
 	return A2(
 		_elm_lang$core$Platform_Sub$map,
 		_user$project$Main$PerimeterMsg,
-		_user$project$Perimeter$subscriptions(model.perimeter));
+		_roine$elm_perimeter$Perimeter$subscriptions(model.perimeter));
 };
 var _user$project$Main$Left = {ctor: 'Left'};
 var _user$project$Main$Breached = {ctor: 'Breached'};
@@ -9330,7 +9330,7 @@ var _user$project$Main$update = F2(
 						{buttonText: 'Add'}),
 					{ctor: '[]'});
 			default:
-				var _p1 = A3(_user$project$Perimeter$update, _p0._0, model.perimeter, _user$project$Main$perimeterConfig);
+				var _p1 = A3(_roine$elm_perimeter$Perimeter$update, _p0._0, model.perimeter, _user$project$Main$perimeterConfig);
 				var newPerimeterModel = _p1._0;
 				var maybeMsg = _p1._1;
 				var _p2 = maybeMsg;
@@ -9381,7 +9381,7 @@ var _user$project$Main$view = function (model) {
 					_elm_lang$html$Html$map,
 					_user$project$Main$PerimeterMsg,
 					A3(
-						_user$project$Perimeter$view,
+						_roine$elm_perimeter$Perimeter$view,
 						_user$project$Main$perimeterConfig,
 						model.perimeter,
 						{

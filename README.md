@@ -3,6 +3,10 @@ ELM Perimeter
 
 Creates an invisible perimeter around a target element and monitors mouse breaches.
 
+[Demo](https://runelm.io/c/0oz)
+
+Code sample:
+
 ```elm
 module Main exposing (view, update, subscriptions)
 
