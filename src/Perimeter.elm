@@ -1,6 +1,17 @@
-module Perimeter exposing (Perimeter, init, Config, view, Msg, update, subscriptions)
+module Perimeter
+    exposing
+        ( Perimeter
+        , init
+        , Config
+        , view
+        , Msg
+        , update
+        , subscriptions
+        )
 
-{-|
+{-| This library helps you create an invisible perimeter around a target
+element and monitors mouse breaches. This is a [Perimeter][]'s port to ELM.
+[Perimeter]: https://github.com/e-sites/perimeter.js
 
 # Type and Constructor
 @docs Perimeter, Msg, Config
@@ -52,11 +63,11 @@ type Perimeter
     = Perimeter State
 
 
-{-| Initial the Perimeter's state, default value:
+{-| Initialise the Perimeter's state, default state:
 
     init =
         { breached = False
-        , rectangle = BoundingRect.initialRectangle
+        , rectangle = initialRectangle
         , trigger = False
         }
 
@@ -129,7 +140,7 @@ type Msg
     | TriggerEvent
 
 
-{-| The Perimeter update function. It returns a `Maybe Msg` that needs to be
+{-| The update function returns a `Maybe Msg` that needs to be
 passed to the parent's update function, like this:
 
     let
@@ -141,7 +152,11 @@ passed to the parent's update function, like this:
                 ( { model | perimeter = newPerimeterModel }, Cmd.none )
 
             Just msg ->
-                update msg { model | perimeter = newPerimeterModel }
+                ( { model | perimeter = newPerimeterModel }, Task.perform (always msg) (Task.succeed ()) )
+
+The last line could be replaced by:
+
+    update msg { model | perimeter = newPerimeterModel }
 -}
 update : Msg -> Perimeter -> Config msg -> ( Perimeter, Maybe msg )
 update msg (Perimeter ({ rectangle } as model)) ({ padding } as config) =
@@ -169,12 +184,7 @@ update msg (Perimeter ({ rectangle } as model)) ({ padding } as config) =
             ( { model | trigger = True } |> Perimeter, Nothing )
 
 
-{-| Perimeter's subscriptions. It is mandatory to wire this up in the parents.
-
-    subscriptions : Model -> Sub Msg
-    subscriptions model =
-        Sub.map PerimeterMsg (Perimeter.subscriptions model.perimeter)
-
+{-| It is mandatory to wire this up in the parents otherwise perimeter won't work
 -}
 subscriptions : Perimeter -> Sub Msg
 subscriptions (Perimeter model) =
