@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "summary": "Creates an invisible perimeter around a target element and monitors breaches",
     "repository": "https://github.com/roine/elm-perimeter.git",
     "license": "BSD3",
