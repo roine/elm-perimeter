@@ -9313,47 +9313,48 @@ var _user$project$Main$Breached = {ctor: 'Breached'};
 var _user$project$Main$perimeterConfig = {padding: 12, onBreach: _user$project$Main$Breached, onLeave: _user$project$Main$Left, debug: true};
 var _user$project$Main$update = F2(
 	function (msg, model) {
-		update:
-		while (true) {
-			var _p0 = msg;
-			switch (_p0.ctor) {
-				case 'Breached':
-					return A2(
-						_elm_lang$core$Platform_Cmd_ops['!'],
-						_elm_lang$core$Native_Utils.update(
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'Breached':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{buttonText: 'Loading...'}),
+					{ctor: '[]'});
+			case 'Left':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{buttonText: 'Add'}),
+					{ctor: '[]'});
+			default:
+				var _p1 = A3(_user$project$Perimeter$update, _p0._0, model.perimeter, _user$project$Main$perimeterConfig);
+				var newPerimeterModel = _p1._0;
+				var maybeMsg = _p1._1;
+				var _p2 = maybeMsg;
+				if (_p2.ctor === 'Nothing') {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
 							model,
-							{buttonText: 'Loading...'}),
-						{ctor: '[]'});
-				case 'Left':
-					return A2(
-						_elm_lang$core$Platform_Cmd_ops['!'],
-						_elm_lang$core$Native_Utils.update(
+							{perimeter: newPerimeterModel}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
 							model,
-							{buttonText: 'Add'}),
-						{ctor: '[]'});
-				default:
-					var _p1 = A3(_user$project$Perimeter$update, _p0._0, model.perimeter, _user$project$Main$perimeterConfig);
-					var newPerimeterModel = _p1._0;
-					var maybeMsg = _p1._1;
-					var _p2 = maybeMsg;
-					if (_p2.ctor === 'Nothing') {
-						return {
-							ctor: '_Tuple2',
-							_0: _elm_lang$core$Native_Utils.update(
-								model,
-								{perimeter: newPerimeterModel}),
-							_1: _elm_lang$core$Platform_Cmd$none
-						};
-					} else {
-						var _v2 = _p2._0,
-							_v3 = _elm_lang$core$Native_Utils.update(
-							model,
-							{perimeter: newPerimeterModel});
-						msg = _v2;
-						model = _v3;
-						continue update;
-					}
-			}
+							{perimeter: newPerimeterModel}),
+						_1: A2(
+							_elm_lang$core$Task$perform,
+							_elm_lang$core$Basics$always(_p2._0),
+							_elm_lang$core$Task$succeed(
+								{ctor: '_Tuple0'}))
+					};
+				}
 		}
 	});
 var _user$project$Main$view = function (model) {

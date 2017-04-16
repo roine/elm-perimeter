@@ -7,6 +7,8 @@ import Perimeter exposing (Perimeter)
 
 -- MODEL
 
+import Task
+
 
 type alias Model =
     { buttonText : String, perimeter : Perimeter }
@@ -59,7 +61,7 @@ update msg model =
                         ( { model | perimeter = newPerimeterModel }, Cmd.none )
 
                     Just msg ->
-                        update msg { model | perimeter = newPerimeterModel }
+                        ( { model | perimeter = newPerimeterModel }, Task.perform (always msg) (Task.succeed ()) )
 
 
 
