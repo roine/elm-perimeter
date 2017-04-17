@@ -29,10 +29,9 @@ element and monitors mouse breaches. This is a [Perimeter][]'s port to ELM.
 @docs subscriptions
 -}
 
-import Html exposing (..)
-import Html.Attributes exposing (classList, style)
+import Html exposing (Html, span, text, div)
+import Html.Attributes exposing (style)
 import Json.Decode exposing (Decoder)
-import Html.Events exposing (on)
 import Mouse exposing (Position)
 import Time
 import Perimeter.BoundingRect as BoundingRect
@@ -105,7 +104,7 @@ init =
     Perimeter.view perimeterConfig model.perimeter [ button [] [ text "Add" ] ]
 -}
 view : Config msg -> Perimeter -> List (Html Msg) -> Html Msg
-view ({ padding, debug } as config) (Perimeter ({ rectangle } as model)) children =
+view { padding, debug } (Perimeter ({ rectangle } as model)) children =
     span [ BoundingRect.getBoundingRect SetRectangle, BoundingRect.getBoundingReactStyle model.trigger ]
         (children
             ++ [ if debug then
@@ -163,10 +162,10 @@ update msg (Perimeter ({ rectangle } as model)) ({ padding } as config) =
     case msg of
         VerifyBreach { x, y } ->
             if
-                ((toFloat x) > rectangle.left - padding)
-                    && ((toFloat x) < rectangle.right + padding)
-                    && ((toFloat y) > rectangle.top - padding)
-                    && ((toFloat y) < rectangle.bottom + padding)
+                (toFloat x > rectangle.left - padding)
+                    && (toFloat x < rectangle.right + padding)
+                    && (toFloat y > rectangle.top - padding)
+                    && (toFloat y < rectangle.bottom + padding)
             then
                 if model.breached == False then
                     ( { model | breached = True } |> Perimeter, Just config.onBreach )
